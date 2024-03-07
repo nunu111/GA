@@ -23,13 +23,13 @@ public class GA {
     public void Start(){
         List<List<Integer>> population = generatePopulation(rectangles, n_population,n_genes);
         List<Integer> best = new ArrayList<>();
-        double bestEval = findFitness(population.getFirst(), main_rectangle, rectangles);
+        double bestEval = findFitness(population.getFirst(), main_rectangle);
         System.out.print(best + " ");
         System.out.println(bestEval);
         for (int gen = 0; gen < n_generation; gen++) {
             List<Double> fitness = new ArrayList<>();
             for (List<Integer> individual : population) {
-                double individualFitness = findFitness(individual, main_rectangle, rectangles);
+                double individualFitness = findFitness(individual, main_rectangle);
                 fitness.add(individualFitness);
             }
             for (int i = 0; i < n_population; i++) {
@@ -151,7 +151,7 @@ public class GA {
         return selectedPopulation;
     }
 
-    public float findFitness(List<Integer> individual, MainPaper mainRectangle, List<Rectangle> rectangles) {
+    public float findFitness(List<Integer> individual, MainPaper mainRectangle) {
         MainPaper ini =  mainRectangle.copy(); // Assuming Rectangle class has a copy constructor
         int[][] fitnessMatrix = ini.matrix;
 
