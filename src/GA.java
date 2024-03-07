@@ -41,7 +41,7 @@ public class GA {
                     MainPaper copyMainRectangle = main_rectangle.copy();
                     int[][] fitnessMatrix = copyMainRectangle.matrix;
                     cutting(best, fitnessMatrix);
-                    for(int newBest=0 ;newBest < fitnessMatrix.length;newBest++) System.out.println(Arrays.toString(fitnessMatrix[newBest]));
+                    for (int[] matrix : fitnessMatrix) System.out.println(Arrays.toString(matrix));
                 }
             }
             List<List<Integer>> selected  = selection(population,fitness,n_population);
@@ -169,7 +169,6 @@ public class GA {
     }
 
     public static int[] findNextZero(int[][] matrix, int[] startIndex) {
-        int rows = matrix.length;
         int cols = matrix[0].length;
         int row = startIndex[0];
         int col = startIndex[1];
