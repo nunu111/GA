@@ -5,10 +5,10 @@ import java.util.Random;
 import java.util.stream.IntStream;
 
 public class GA {
-    private int n_genes,n_generation,n_population;
-    private float r_crossover, r_mutation;
-    private MainPaper main_rectangle;
-    private List<Rectangle> rectangles;
+    private final int n_genes,n_generation,n_population;
+    private final float r_crossover, r_mutation;
+    private final MainPaper main_rectangle;
+    private final List<Rectangle> rectangles;
     public GA(int n_genes,int n_generation,int n_population,float r_crossover,float r_mutation,
               MainPaper main_rectangle ,List<Rectangle> rectangles){
         this.n_genes = n_genes;
