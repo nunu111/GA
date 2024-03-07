@@ -57,6 +57,30 @@ public class GA {
             }
             population = new ArrayList<>(children);
         }
+        cutting(best, main_rectangle.matrix);
+        float area=0;
+        int[] rec = new int[rectangles.size()];
+        for(int i : best) {
+            if(i == 0) continue;
+            rec[i] += 1;
+            System.out.println("used :" + rectangles.get(i).col +"x"+ rectangles.get(i).row +" " + (rectangles.get(i).isRotated? "rotated" : "not rotated"));
+
+            area += rectangles.get(i).col * rectangles.get(i).row;
+
+        }
+        System.out.println("------------------------------------------------------------------------------");
+        for(int i =1 ; i < rectangles.size() ; i++) {
+            if(rec[i]==0) continue;
+            System.out.println("used: " + rectangles.get(i).col +"x"+ rectangles.get(i).row +" " + (rectangles.get(i).isRotated? "rotated " : "not rotated ") +rec[i] +" unit");
+        }
+        System.out.println("limit area: "+ main_rectangle.col * main_rectangle.row);
+        System.out.println("area: "+area);
+        System.out.println("fitness: " + bestEval);
+        System.out.println("matrix:" );
+        for(int[] m : main_rectangle.matrix){
+            System.out.println( Arrays.toString(m));
+        }
+
     }
     private static void mutation(List<Integer> bitstring, double r_mut, int idx_limit) {
         Random random = new Random();

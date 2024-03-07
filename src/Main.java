@@ -8,6 +8,7 @@ public class Main {
         List<Rectangle> sub_paper = new ArrayList<>();
         sub_paper.add(new Rectangle(3,3,1,false));
         sub_paper.add(new Rectangle(2,3,2,false));
+//        sub_paper.add(new Rectangle(5,5,1,false));
         int size = sub_paper.size();
         for (int i =0 ; i < size ; i++) {
             sub_paper.add(sub_paper.get(i).Rotate());
