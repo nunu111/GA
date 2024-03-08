@@ -6,8 +6,8 @@ public class Main {
         System.out.println("Hello world!");
         MainPaper Main_paper =  new MainPaper(10,20);
         List<Rectangle> sub_paper = new ArrayList<>();
-        sub_paper.add(new Rectangle(3,3,1,false));
-        sub_paper.add(new Rectangle(2,3,2,false));
+        sub_paper.add(new Rectangle(3,3,false));
+        sub_paper.add(new Rectangle(2,3,false));
 //        sub_paper.add(new Rectangle(5,5,1,false));
         int size = sub_paper.size();
         for (int i =0 ; i < size ; i++) {
@@ -18,7 +18,7 @@ public class Main {
         int n_generation = 500;
         int n_genes = f.genesGenerator(Main_paper,sub_paper);
 
-        sub_paper.addFirst(new Rectangle(0,0,0,false));
+        sub_paper.addFirst(new Rectangle(0,0,false));
         int n_population = 100;
         float r_crossover = 0.9F;
         float r_mutation = (float) (1.0 / (float)n_genes);

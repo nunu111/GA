@@ -71,7 +71,7 @@ public class GA {
         System.out.println("------------------------------------------------------------------------------");
         for(int i =1 ; i < rectangles.size() ; i++) {
             if(rec[i]==0) continue;
-            System.out.println("used: " + rectangles.get(i).col +"x"+ rectangles.get(i).row +" " + (rectangles.get(i).isRotated? "rotated " : "not rotated ") +rec[i] +" unit");
+            System.out.println(i +". used: " + rectangles.get(i).col +"x"+ rectangles.get(i).row +" " + (rectangles.get(i).isRotated? "rotated " : "not rotated ") +rec[i] +" unit");
         }
         System.out.println("limit area: "+ main_rectangle.col * main_rectangle.row);
         System.out.println("area: "+area);
@@ -173,18 +173,25 @@ public class GA {
                 for(int i = 0;i< fitnessMatrix.length * fitnessMatrix[0].length; i++){
                     nearest_zero_index = findNextZero(fitnessMatrix,nearest_zero_index);
                     if (nearest_zero_index == null) break;
+                    //optimize if index out of bound
+                    if (nearest_zero_index[0] + rectangles.get(inv).row >= fitnessMatrix.length || nearest_zero_index[1] + rectangles.get(inv).col >= fitnessMatrix.length) {
+                        break;
+                    }
                     if(isFit(nearest_zero_index[0],nearest_zero_index[1],rectangles.get(inv).row,rectangles.get(inv).col,fitnessMatrix)){
                         break;
                     }
                 }
-                if(nearest_zero_index == null) {
+                //optimize if index out of bound
+                if(nearest_zero_index == null || nearest_zero_index[0] + rectangles.get(inv).row >= fitnessMatrix.length || nearest_zero_index[1] + rectangles.get(inv).col >= fitnessMatrix.length) {
                     fitness -= rectangles.get(inv).row*rectangles.get(inv).col;
                     continue;
                 }
             }
             for (int row = nearest_zero_index[0]; row < nearest_zero_index[0] + rectangles.get(inv).row; row++) {
                 for (int col = nearest_zero_index[1]; col <nearest_zero_index[1] + rectangles.get(inv).col; col++) {
-                    fitnessMatrix[row][col] = rectangles.get(inv).index;
+//                    fitnessMatrix[row][col] = rectangles.get(inv).index;
+                    fitnessMatrix[row][col] = inv;
+
                 }
             }
             fitness += rectangles.get(inv).row*rectangles.get(inv).col;
