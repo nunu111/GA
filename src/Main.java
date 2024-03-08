@@ -3,12 +3,11 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
-        MainPaper Main_paper =  new MainPaper(10,20);
+        MainPaper Main_paper =  new MainPaper(100,50);
         List<Rectangle> sub_paper = new ArrayList<>();
-        sub_paper.add(new Rectangle(3,3,false));
-        sub_paper.add(new Rectangle(2,3,false));
-//        sub_paper.add(new Rectangle(5,5,1,false));
+        sub_paper.add(new Rectangle(30,30,false));
+        sub_paper.add(new Rectangle(20,30,false));
+//        sub_paper.add(new Rectangle(5,5,false));
         int size = sub_paper.size();
         for (int i =0 ; i < size ; i++) {
             sub_paper.add(sub_paper.get(i).Rotate());

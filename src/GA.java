@@ -174,7 +174,7 @@ public class GA {
                     nearest_zero_index = findNextZero(fitnessMatrix,nearest_zero_index);
                     if (nearest_zero_index == null) break;
                     //optimize if index out of bound
-                    if (nearest_zero_index[0] + rectangles.get(inv).row >= fitnessMatrix.length || nearest_zero_index[1] + rectangles.get(inv).col >= fitnessMatrix.length) {
+                    if (nearest_zero_index[0] + rectangles.get(inv).row >= fitnessMatrix.length ) {
                         break;
                     }
                     if(isFit(nearest_zero_index[0],nearest_zero_index[1],rectangles.get(inv).row,rectangles.get(inv).col,fitnessMatrix)){
@@ -182,7 +182,7 @@ public class GA {
                     }
                 }
                 //optimize if index out of bound
-                if(nearest_zero_index == null || nearest_zero_index[0] + rectangles.get(inv).row >= fitnessMatrix.length || nearest_zero_index[1] + rectangles.get(inv).col >= fitnessMatrix.length) {
+                if(nearest_zero_index == null || nearest_zero_index[0] + rectangles.get(inv).row >= fitnessMatrix.length ) {
                     fitness -= rectangles.get(inv).row*rectangles.get(inv).col;
                     continue;
                 }
